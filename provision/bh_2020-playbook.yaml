@@ -20,16 +20,23 @@
 
     - name: Requisites of Docker, Install yum-utils device mapper, and lvm2 
       yum:
-        name: yum-utils,device-mapper-persistent-data,lvm2
-        update_cache: yes
-        state: latest
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: present
+        update_cache: true
+      notify: Requisites of docker installed
       when: ansible_distribution == 'CentOS'
 
     - name: Add docker repository
       yum_repository:
-        name: docker-ce
-        description: Docker stable repository
-        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+        name: docker-ce-stable
+        description: Docker CE Stable - $basearch
+        baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://download.docker.com/linux/centos/gpg
       when: ansible_distribution == 'CentOS'
 
     - name: Install docker-ce from stable repository
@@ -40,13 +47,12 @@
       when: ansible_distribution == 'CentOS'
 
     - name: Display docker version
-      debug:
-        msg: "{{ hostvars[ansible_hostname].ansible_local.getdocker_version.version }}"
+      command: docker --version
 
     - name: Enable docker
       systemd:
         name: docker
-        enable: yes
+        enabled: yes
         masked: no
 
     - name: Make sure the docker service is running
