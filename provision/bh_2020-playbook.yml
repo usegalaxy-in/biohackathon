@@ -1,0 +1,79 @@
+---
+# YAML document for provisioning bh2020 machines
+-
+ 
+  hosts: testenv
+ 
+  # Variable: variables that will apply to the play, on all target systems
+  # vars:
+  #   motd_centos: "Welcome to BioHackathon 2020 in CentOS Linux\n"
+  #   motd_ubuntu: "Welcome to BioHackathon 2020 in Ubuntu Linux\n"
+ 
+  # Task: the list of tasks that will be executed within the playbook
+  # tasks:
+  #   - name: Configure a MOTD (message of the day task)
+  #     copy:
+  #       content: "{{ motd_centos }}"
+  #       dest: /etc/motd
+  #     notify: MOTD changed
+  #     when: ansible_distribution == "CentOS"
+
+  #   - name: Requisites of Docker, Install yum-utils device mapper, and lvm2 
+  #     yum:
+  #       name:
+  #         - yum-utils
+  #         - device-mapper-persistent-data
+  #         - lvm2
+  #       state: present
+  #       update_cache: true
+  #     notify: Requisites of docker installed
+  #     when: ansible_distribution == 'CentOS'
+
+  #   - name: Add docker repository
+  #     yum_repository:
+  #       name: docker-ce-stable
+  #       description: Docker CE Stable - $basearch
+  #       baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
+  #       enabled: yes
+  #       gpgcheck: yes
+  #       gpgkey: https://download.docker.com/linux/centos/gpg
+  #     when: ansible_distribution == 'CentOS'
+
+  #   - name: Install docker-ce from stable repository
+  #     yum:
+  #       name: docker-ce
+  #       update_cache: yes
+  #       state: latest
+  #     when: ansible_distribution == 'CentOS'
+
+  #   - name: Display docker version
+  #     command: docker --version
+
+  #   # - name: Enable docker
+  #   #   systemd:
+  #   #     name: docker
+  #   #     enabled: yes
+  #   #     masked: no
+
+  #   # - name: Make sure the docker service is running
+  #   #   systemd:
+  #   #     state: started
+  #   #     name: docker
+
+  #   - name: Configure a MOTD (message of the day task)
+  #     copy:
+  #       content: "{{ motd_ubuntu }}"
+  #       dest: /etc/motd
+  #     notify: MOTD changed
+  #     when: ansible_distribution == "Ubuntu"
+ 
+  # Handlers: handlers that are executed as a notify key from a task
+  # handlers:
+  #   - name: MOTD changed
+  #     debug:
+  #       msg: The MOTD was changed from Handlers
+
+  roles:
+    - docker
+
+...

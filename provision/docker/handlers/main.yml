@@ -1,0 +1,21 @@
+---
+# handlers file for docker
+
+- name: Enable docker
+  systemd:
+    name: docker
+    enabled: yes
+    masked: no
+
+- name: Make sure the docker service is running
+  systemd:
+    state: started
+    name: docker
+
+- name: MOTD changed
+  debug:
+    msg: The MOTD was changed from Handlers
+
+
+
+...
