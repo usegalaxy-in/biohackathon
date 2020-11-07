@@ -1,0 +1,27 @@
+# BioHackathon instances
+[biohackathon]
+[biohackathon:children]
+testenv
+#biohackathon2020
+
+# Testing environment
+[testenv]
+#193.62.54.33
+bh2020-0
+
+# UK Machines
+[biohackathon2020]
+bh2020-[0:19].ebi.ac.uk
+
+# More variables specific to testenv
+[testenv:vars]
+ansible_host_key_checking = false
+ansible_user = centos
+ansible_become = true
+ansible_ssh_private_key_file = ~/.ssh/bh2020ebi.key
+set_password = false
+
+# More variables specific to biohackathon2020
+[biohackathon2020:vars]
+ansible_ssh_private_key_file = ~/.ssh/bh2020ebi.key
+set_password = false
