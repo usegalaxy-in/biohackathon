@@ -8,5 +8,6 @@
     # docker role for installing docker on remote machine
     - docker
     - role: gantsign.minikube
+    - helm
 
 ...

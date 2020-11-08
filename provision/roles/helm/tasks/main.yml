@@ -1,0 +1,19 @@
+---
+# tasks file for helm
+# - name: Install helm chart
+#   community.kubernetes.helm:
+#     host: localhost
+#     chart:
+#       name: memcached
+#       version: 0.4.0
+#       source:
+#         type: repo
+#         location: https://kubernetes-charts.storage.googleapis.com
+#     state: present
+#     name: BH-memcached
+#     namespace: default
+
+- name: Add stable chart repo
+  community.kubernetes.helm_repository:
+    name: stable
+    repo_url: "https://kubernetes-charts.storage.googleapis.com"

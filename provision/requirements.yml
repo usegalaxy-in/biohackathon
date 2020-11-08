@@ -1,0 +1,4 @@
+---
+# Require dependencies for provisioning
+
+- src: gantsign.minikube

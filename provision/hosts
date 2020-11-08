@@ -7,11 +7,36 @@ testenv
 # Testing environment
 [testenv]
 #193.62.54.33
-bh2020-0
+bhtest
 
 # UK Machines
 [biohackathon2020]
-bh2020-[0:19].ebi.ac.uk
+biohackathon-7
+biohackathon-23
+biohackathon-5
+biohackathon-22
+biohackathon-8
+biohackathon-2
+biohackathon-1
+bhtest
+biohackathon-3
+biohackathon-14
+biohackathon-6
+biohackathon-11
+biohackathon-16
+biohackathon-12
+biohackathon-4
+biohackathon-9
+biohackathon-13
+biohackathon-10
+biohackathon-20
+biohackathon-18
+biohackathon-17
+biohackathon-15
+biohackathon-19
+biohackathon-21
+
+
 
 # More variables specific to testenv
 [testenv:vars]
@@ -23,5 +48,8 @@ set_password = false
 
 # More variables specific to biohackathon2020
 [biohackathon2020:vars]
+ansible_host_key_checking = false
+ansible_user = centos
+ansible_become = true
 ansible_ssh_private_key_file = ~/.ssh/bh2020ebi.key
 set_password = false
