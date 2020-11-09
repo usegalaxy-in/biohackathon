@@ -1,0 +1,21 @@
+---
+# tasks file for kubectl
+- name: Add Kubernetes repository
+  yum_repository:
+    name: Kubernetes
+    description: kubectl repository from Kubernetes.io
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    enabled: yes
+    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+  when: ansible_distribution == 'CentOS'
+
+- name: Install kubectl from repository
+  yum:
+    name: kubectl
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == 'CentOS'
+
+...

@@ -9,5 +9,6 @@
     - docker
     - role: gantsign.minikube
     - helm
+    - kubectl
 
 ...
