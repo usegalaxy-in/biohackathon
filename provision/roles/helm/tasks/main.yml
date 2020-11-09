@@ -1,0 +1,38 @@
+---
+# tasks file for helm
+# - name: Install helm chart
+#   community.kubernetes.helm:
+#     host: localhost
+#     chart:
+#       name: memcached
+#       version: 0.4.0
+#       source:
+#         type: repo
+#         location: https://kubernetes-charts.storage.googleapis.com
+#     state: present
+#     name: BH-memcached
+#     namespace: default
+
+# - name: Add stable chart repo
+#   community.kubernetes.helm_repository:
+#     name: stable
+#     repo_url: "https://kubernetes-charts.storage.googleapis.com"
+
+
+- name: Get the helm latest file from Github
+  get_url:
+    url: https://get.helm.sh/helm-v3.4.0-linux-amd64.tar.gz
+    dest: /tmp/helm-v3.4.0-linux-amd64.tar.gz
+    mode: '0664'
+  # command: wget https://get.helm.sh/helm-v3.4.0-linux-amd64.tar.gz
+
+- name: Extract tar file which is downloaded
+  unarchive:
+    src: /tmp/helm-v3.4.0-linux-amd64.tar.gz
+    dest: /tmp/
+    remote_src: yes
+
+- name: Move the extracted tar to the bin directory
+  command: mv /tmp/linux-amd64/helm /usr/local/bin/helm
+
+...

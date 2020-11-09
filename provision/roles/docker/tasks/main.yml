@@ -1,6 +1,35 @@
 ---
 # tasks file for docker
 
+# Install other packages and tools
+- name: Enable EPEL Repository on CentOS 7
+  yum:
+    name: epel-release
+    state: latest
+  become: true
+  when: ansible_distribution == 'CentOS'
+
+- name: Install basic tools & packages
+  package:
+    name:
+      - make
+      - git
+      - nano
+      - vim
+      - emacs
+      - python3-pip
+      - tree
+      - byobu
+      - screen
+     # - moreutils # for gat-cli
+    state: latest
+
+- name: Enable byobu for users (forcing them into a Screen/TMUX session on login via ssh)
+  command: byobu-launcher-install
+  become: true
+  become_user: centos
+  when: ansible_distribution == 'CentOS'
+
 - name: Configure a MOTD (message of the day task)
   copy:
     content: "{{ motd_centos }}"
