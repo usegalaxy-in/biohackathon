@@ -1,7 +1,7 @@
 ---
 # vars file for docker
 
-motd_centos: "Welcome to BioHackathon 2020 in CentOS Linux\n"
-motd_ubuntu: "Welcome to BioHackathon 2020 in Ubuntu Linux\n"
+motd_centos: "Welcome to BioHackathon 2020 in CentOS Linux (infrastructure by EMBL-EBI EMBASSY Cloud and the EBI Expression Atlas Team)\n"
+motd_ubuntu: "Welcome to BioHackathon 2020 in Ubuntu Linux (infrastructure by EMBL-EBI EMBASSY Cloud and the EBI Expression Atlas Team)\n"
 
 ...
